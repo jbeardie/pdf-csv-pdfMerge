@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 '''
-pdf-csv-pdfMerge can merge multiple pdf-files to a single pdf file with
+pdf-csv-pdfMerge can merge multiple pdf-files into a single pdf file with
 bookmarks and custom text in selected pages. Merge configuration is made in
 the csv-file.
 
@@ -19,8 +19,8 @@ def main(args):
 
     # Check if path exists and get a list of pdf-files
     if os.path.isdir(args.path):
-        path = args.path
-        files = sorted([path+x for x in os.listdir(path)
+        path = os.path.abspath(args.path)
+        files = sorted([os.path.join(path, x) for x in os.listdir(path)
                         if x.endswith('.pdf')])
         if not files:
             print('No pdf-files found from: ', path)
@@ -44,7 +44,7 @@ def main(args):
     if os.path.isfile(csv_file):
         print('csv-file found. Merging..')
         lor = pdfMBT.readCsv(csv_file)
-        pdfMBT.createMergePdf(lor)
+        pdfMBT.createMergePdf(lor, output)
         print('done!')
     else:
         print('Creating a csv-file')

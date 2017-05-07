@@ -93,7 +93,7 @@ def readCsv(filename):
     return lor[1:]
 
 
-def createMergePdf(lor):
+def createMergePdf(lor, output):
     # This funcion creates a merged pdf using the settings found in csv-file
 
     # get files from lor
@@ -125,7 +125,7 @@ def createMergePdf(lor):
 
     # Create output pdf file
     try:
-        output_pdf_file = open('output.pdf', 'wb')
+        output_pdf_file = open(output, 'wb')
         output_pdf_stream.write(output_pdf_file)
     finally:
         output_pdf_file.close()
@@ -155,32 +155,7 @@ def addText2Pdf(row):
 
 
 def main():
-    ''' This is a test scipt for pdfMBT-module.
-    I takes all the pdf's from path and creates a csv if it's not found in
-    the same path. If csv already exists, script will merge the pdf-files
-    '''
-    print("pdfMBT - Pdf merge with Bookmarks and text")
-
-    while True:
-        path = input("Where are your pdf-files? ")
-        # path = '/home/joni/koodaus/pdfMBT/pdf/'
-        # Get pdf-files from path
-        files = sorted([path+x for x in os.listdir(path) if x.endswith('.pdf')])
-        if files:
-            break
-        print("No pdf-files found from %s", path)
-
-    print("Toimiiko hyvin")
-
-    # files_to_merge = readPdfFiles(files)
-
-    # csvfile = path+'config.csv'
-
-    # createCsv(csvfile, files, files_to_merge)
-
-    # lor = readCsv(csvfile)
-
-    # createMergePdf(lor)
+    print('This is only a function library. Use pdf-csv-pdfMerge instead')
 
 if __name__ == '__main__':
     # Excecute only if run as a script
