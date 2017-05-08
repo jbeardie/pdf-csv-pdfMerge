@@ -51,7 +51,7 @@ def createCsv(csvfilename, files, files_to_merge):
     default_text_y = 10
     default_text = "Test String!"
 
-    with open(csvfilename, 'w') as csvfile:
+    with open(csvfilename, 'w', newline='') as csvfile:
         csvwriter = csv.writer(csvfile)
 
         # Create csv-values in lists witin list
@@ -95,7 +95,6 @@ def readCsv(filename):
 
 def createMergePdf(lor, output):
     # This funcion creates a merged pdf using the settings found in csv-file
-
     # get files from lor
     files = [lor[i][0] for i in range(len(lor)) if lor[i][0] != '']
 
